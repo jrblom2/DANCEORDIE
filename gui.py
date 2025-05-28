@@ -45,10 +45,15 @@ class DanceOrDieApp:
         return
     
     def stop_stream(self):
-        return
+        self.streaming = False
     
     def select_file(self):
-        return
+        self.path = filedialog.askopenfilename(
+            title="Select Video File",
+            filetypes=[("Video Files", "*.mp4 *.avi *.mov"), ("Image Files", "*.jpg *.jpeg *.png"), ("All Files", "*.*")]
+        )
+        if self.path:
+            self.file_label.config(text=self.path.split("/")[-1])
     
 root = tk.Tk()
 app = DanceOrDieApp(root)
